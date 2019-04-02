@@ -24,7 +24,8 @@ f=false,d=document;
       a.setAttribute('id','_vis_opt_path_hides');
       a.setAttribute('type','text/css');
       if(a.styleSheet)a.styleSheet.cssText=b;
-      else a.appendChild(d.createTextNode(b));h.appendChild(a);
+      else a.appendChild(d.createTextNode(b));
+      //h.appendChild(a);
       this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());
       return settings_timer;
     }
