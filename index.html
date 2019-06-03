@@ -1,81 +1,40 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>title</title>
-	<script
-  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
-  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
-  crossorigin="anonymous"></script>
-	<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <title>Document</title>
 </head>
 <body>
-  <script>
-  window.inlineJS = [];
-  </script>
-body
-  <button>button</button>
-<script>
-window.inlineJS.push(function() {
-  	_vwo_code=(function(){
-		var account_id=383869,
-			settings_tolerance=2000,
-			library_tolerance=2500,
-			use_existing_jquery=true,
-			f=false,d=document;
-		return{
-			use_existing_jquery:function(){return use_existing_jquery;},
-			library_tolerance:function(){return library_tolerance;},
-			finish:function(){
-				if(!f){
-					f=true;
-					var a=d.getElementById('_vis_opt_path_hides');
-					console.timeEnd();
-					console.log('remove', a);
-					if(a)a.parentNode.removeChild(a);
-				}
-			},
-			finished:function(){return f;},
-			load:function(a){
-				var b=d.createElement('script');
-				b.src=a;b.type='text/javascript';
-				b.innerText;
-				b.onerror=function(){_vwo_code.finish();};
-				d.getElementsByTagName('head')[0].appendChild(b);
-			},
-			init:function(){
-				settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);
-				var a=d.createElement('style'),
-					b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',
-					h=d.getElementsByTagName('head')[0];
-				a.setAttribute('id','_vis_opt_path_hides');
-				a.setAttribute('type','text/css');
+  <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 37 31" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M33 0C35.2091 0 37 1.79086 37 4V22C37 24.2091 35.2091 26 33 26H24.4978L24.4952 31L18.6173 26H4C1.79086 26 0 24.2091 0 22V4C0 1.79086 1.79086 0 4 0H33Z" fill="red"/>
+<circle id="circle1" cx="11.6" cy="13" r="2" fill="blue" fill-opacity="0.3"/>
+<circle cx="18.8" cy="13" r="2" fill="blue" fill-opacity="0.3"/>
+<circle cx="26" cy="13" r="2" fill="blue" fill-opacity="0.3"/>
+<!-- <animate 
+    xlink:href="#circle1"
+    attributeName="fill-opacity"
+    from="0.3"
+    to="1" 
+    dur="5s"
+    begin="0s"
+    values="0.3; 0.3; 1; 0.3"
+    repeatCount="indefinite"
+    keyTimes="0; 0.9; 0.95; 1"
+    fill="freeze" 
+    id="circ-anim1" />
 
-				if(a.styleSheet)a.styleSheet.cssText=b;
-				else a.appendChild(d.createTextNode(b));
-				console.time();
-				console.log('append', a);
-				// h.appendChild(a);
-				this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());
-				return settings_timer;
-			}
-		};
-	}());
-	_vwo_settings_timer=_vwo_code.init();
-  });
-	</script>
-	<script>
-(function() {
-	'use strict';
-
-	window.inlineJS.forEach(run);
-	window.inlineJS.push = run;
-
-	function run(func) {
-		func();
-	}
-}());
-	</script>
-  </body>
+<animate 
+    xlink:href="#circle1"
+    attributeName="r"
+    from="2"
+    to="3" 
+    dur="5s"
+    begin="0s"
+    values="2; 2; 3; 2"
+    repeatCount="indefinite"
+    keyTimes="0; 0.9; 0.95; 1"
+    fill="freeze" 
+    id="circ-anim2" /> -->
+</svg>
+</body>
 </html>
