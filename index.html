@@ -3,29 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <style>
-    body {
-  padding: 100px;
-}
-
-#circle1 {
-  animation: shadow  2s infinite ease-in-out;
-}
-
-circle:nth-of-type(2) {
-   animation: shadow  2s infinite ease-in-out 0.3s;
-}
-
-circle:nth-of-type(3) {
-   animation: shadow  2s infinite ease-in-out 0.6s;
-}
-
-@keyframes shadow {
-  0% { fill-opacity: 0.3; }
-  50% { fill-opacity: 1; }
-  100% { fill-opacity: 0.3; }
-}
-  </style>
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 37 31" fill="none">
@@ -44,7 +21,7 @@ circle:nth-of-type(3) {
     repeatCount="indefinite"
     keyTimes="0; 0.9; 0.95; 1"
     fill="freeze" 
-    id="circ-anim1" />
+    id="circ-anim1" /> -->
 
 <animate 
     xlink:href="#circle1"
