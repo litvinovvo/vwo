@@ -82,12 +82,12 @@ function _hasScrollbar() { // проверка на боковой скролл
     return document.body.scrollHeight > document.body.clientHeight;
 }
     function showScroll() {
-    this._body.classList.remove('no-scroll');
+    document.body.classList.remove('no-scroll');
 
-    this._body.style.position = '';
-    this._body.style.width = '';
-    this._body.style.top = '';
-    window.scroll(0, this._scrollTop);
+   document.body.style.position = '';
+    document.body.style.width = '';
+    document.body.style.top = '';
+    window.scroll(0, document.body.scrollTop);
 }
   </script>
 </body>
