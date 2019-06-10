@@ -6,19 +6,31 @@
   <style>
     body {
   padding: 100px;
-      height: 500px;
+      height: 1500px;
       background-color: red;
 }
     .popup {
-      height: 500px;
+      position: fixed;
+      top: 10%;
+      left: 10%;
+      height: 300px;
+      overflow: auto;
       background-color: blue;
     }
+    
+    .content {
+      height: 2000px;
+    }
+    
   </style>
 
 </head>
 <body>
   <div class="popup">
-    iam popup
-  </div> 
+    <div class="content">
+      iam popup
+    </div>
+  </div>
+  bottom
 </body>
 </html>
