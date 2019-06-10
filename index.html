@@ -17,7 +17,6 @@
       height: 300px;
       overflow: auto;
       background-color: blue;
-      -webkit-overflow-scrolling: touch;
     }
     .no-scroll {
    height: 100%;
@@ -26,13 +25,19 @@
     .content {
       height: 2000px;
     }
+    .buttons {
+      position: fixed;
+      bottom: 50px;
+    }
     
   </style>
 
 </head>
 <body>
+  <div class="buttons">
   <button onclick='hideScroll()'>hide</button>
   <button onClick='showScroll()'>show</button>
+  </div>
   <div class="popup">
     <div class="content">
       iam popup
