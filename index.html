@@ -6,65 +6,19 @@
   <style>
     body {
   padding: 100px;
+      height: 500px;
+      background-color: red;
 }
+    .popup {
+      height: 500px;
+      background-color: blue;
+    }
   </style>
 
 </head>
 <body>
-  <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 37 31" fill="none">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M33 0C35.2091 0 37 1.79086 37 4V22C37 24.2091 35.2091 26 33 26H24.4978L24.4952 31L18.6173 26H4C1.79086 26 0 24.2091 0 22V4C0 1.79086 1.79086 0 4 0H33Z" fill="red"/>
-<circle id="circle1" cx="11.6" cy="13" r="2" fill="blue" fill-opacity="0.3"/>
-<circle cx="18.8" cy="13" r="2" fill="blue" fill-opacity="0.3"/>
-<circle cx="26" cy="13" r="2" fill="blue" fill-opacity="0.3"/>
-<!-- <animate 
-    xlink:href="#circle1"
-    attributeName="fill-opacity"
-    from="0.3"
-    to="1" 
-    dur="5s"
-    begin="0s"
-    values="0.3; 0.3; 1; 0.3"
-    repeatCount="indefinite"
-    keyTimes="0; 0.9; 0.95; 1"
-    fill="freeze" 
-    id="circ-anim1" /> -->
-
-<animate 
-    xlink:href="#circle1"
-    attributeName="r"
-    from="2"
-    to="3" 
-    dur="5s"
-    begin="0s"
-    values="2; 2; 3; 2"
-    repeatCount="indefinite"
-    keyTimes="0; 0.9; 0.95; 1"
-    fill="freeze" 
-    id="circ-anim2" /> -->
-</svg>
-<style>
-  .container {
-    width: 150px;
-    height: 50px;
-    position: relative;
-    background-color: green;
-  }
-  
-  .circle {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: 0.2em;
-    transform: translate(-50%,-80%);
-    
-  }
-</style>
-<div class="container">
-  <div class="circle"></div>
-</div>
+  <div class="popup">
+    iam popup
+  </div> 
 </body>
 </html>
