@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
   padding: 100px;
@@ -18,7 +19,10 @@
       background-color: blue;
       -webkit-overflow-scrolling: touch;
     }
-    
+    .no-scroll {
+   height: 100%;
+   overflow: hidden;
+}
     .content {
       height: 2000px;
     }
@@ -27,12 +31,64 @@
 
 </head>
 <body>
+  <button onclick='hideScroll()'>hide</button>
+  <button onClick='showScroll()'>show</button>
   <div class="popup">
     <div class="content">
       iam popup
     </div>
   </div>
   bottom
-  
+  <script>
+    function hideScroll() {
+    document.body.classList.add('no-scroll');
+
+    let scrollTop = window.pageYOffset; // запоминаем текущую прокрутку сверху
+    document.body.style.position = 'fixed';
+    if (this._hasScrollbar()) {
+    // с учетом горизонтального скролла. Чтобы небыло рывка при открытии модального окна
+        document.body.style.width = `calc(100% - ${this._getScrollbarSize()}px)`;
+    } else {
+        document.body.style.width = '100%';
+    }
+    document.body.style.top = -this._scrollTop + 'px';
+}
+    function _getScrollbarSize() { // получение ширины скролла
+    let outer = document.createElement('div');
+    outer.style.visibility = 'hidden';
+    outer.style.width = '100px';
+    outer.style.msOverflowStyle = 'scrollbar'; // needed for WinJS apps
+
+    document.body.appendChild(outer);
+
+    let widthNoScroll = outer.offsetWidth;
+    // force scrollbars
+    outer.style.overflow = 'scroll';
+
+    // add innerdiv
+    let inner = document.createElement('div');
+    inner.style.width = '100%';
+    outer.appendChild(inner);
+
+    let widthWithScroll = inner.offsetWidth;
+
+    // remove divs
+    outer.parentNode.removeChild(outer);
+
+    return widthNoScroll - widthWithScroll;
+}
+
+function _hasScrollbar() { // проверка на боковой скролл
+    return document.body.scrollHeight > document.body.clientHeight;
+}
+    function showScroll() {
+    this._body.classList.remove('no-scroll');
+
+    this._body.style.position = '';
+    this._body.style.width = '';
+    this._body.style.top = '';
+    window.scroll(0, this._scrollTop);
+}
+  </script>
 </body>
 </html>
