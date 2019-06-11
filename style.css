@@ -1,0 +1,33 @@
+body {
+    background-color: red;
+    background-image: linear-gradient(to bottom, red, green);
+    height: 2500px;
+}
+
+.popup {
+    position: fixed;
+    top: 20px;
+    bottom: 20px;
+    left: 20px;
+    width: 400px;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.chat {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.header {
+    background-color: lemonchiffon;
+}
+.content {
+    background-color: lavenderblush;
+    overflow: auto;
+}
