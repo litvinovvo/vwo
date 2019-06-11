@@ -1,107 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-  padding: 10px;
-      height: 1500px;
-      background-color: red;
-      background-image: linear-gradient(to bottom, red, green);
-      touch-action: manipulation;
-      touch-action: none;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+      .popup {
+    position: fixed;
+    top: 20px;
+    bottom: 20px;
+    left: 20px;
+    width: 400px;
+    background-color: lightblue;
 }
-    .popup {
-      position: fixed;
-      top: 10%;
-      left: 10%;
-      height: 300px;
-      overflow: auto;
 
-    }
-    .no-scroll {
-   height: 100%;
-   overflow: hidden;
+.chat {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
 }
-    .content {
-      height: 2000px;
-            background-color: blue;
-      background-image: linear-gradient(to bottom, blue, green);
-    }
-    .buttons {
-      position: fixed;
-      bottom: 50px;
-    }
-    
+.header {
+    background-color: lemonchiffon;
+}
+.content {
+    background-color: lavenderblush;
+    overflow: auto;
+}
   </style>
-
 </head>
 <body>
-  <div class="buttons">
-  <button onclick='hideScroll()'>hide</button>
-  <button onClick='showScroll()'>show</button>
-  </div>
-  <div class="popup">
-    <div class="content">
-      iam popup
+    <div class="popup">
+        <div class="options">
+            options
+        </div>
+        <div class="chat">
+            <div class="header">
+                    Title <br>
+                    Subtitle
+                </div>
+                <div class="content">
+                    <p>some content some content</p>
+                    <p>some content some content</p>
+                    <p>some content some content</p>
+                    <p>some content some content</p>
+                    <p>some content some content</p>
+                    <p>some content some content</p>
+                    <p>some content some content</p>
+                    <p>some content some content</p>
+                    <p>some content some content</p>
+                    <p>some content some content</p>
+                    <p>some content some content</p>
+                    <p>some content some content</p>
+                    <p>some content some content</p>
+                </div>
+        </div>
+
     </div>
-  </div>
-  bottom
-  <script>
-    function hideScroll() {
     
-
-    let scrollTop = window.pageYOffset; // запоминаем текущую прокрутку сверху
-    
-    if (_hasScrollbar()) {
-    // с учетом горизонтального скролла. Чтобы небыло рывка при открытии модального окна
-        document.body.style.width = `calc(100% - ${_getScrollbarSize()}px)`;
-    } else {
-        document.body.style.width = '100%';
-    }
-    document.body.classList.add('no-scroll');
-    document.body.style.position = 'fixed';
-    document.body.style.top = -scrollTop + 'px';
-      
-}
-    function _getScrollbarSize() { // получение ширины скролла
-    let outer = document.createElement('div');
-    outer.style.visibility = 'hidden';
-    outer.style.width = '100px';
-    outer.style.msOverflowStyle = 'scrollbar'; // needed for WinJS apps
-
-    document.body.appendChild(outer);
-
-    let widthNoScroll = outer.offsetWidth;
-    // force scrollbars
-    outer.style.overflow = 'scroll';
-
-    // add innerdiv
-    let inner = document.createElement('div');
-    inner.style.width = '100%';
-    outer.appendChild(inner);
-
-    let widthWithScroll = inner.offsetWidth;
-
-    // remove divs
-    outer.parentNode.removeChild(outer);
-
-    return widthNoScroll - widthWithScroll;
-}
-
-function _hasScrollbar() { // проверка на боковой скролл
-    return document.body.scrollHeight > document.body.clientHeight;
-}
-    function showScroll() {
-    document.body.classList.remove('no-scroll');
-
-   document.body.style.position = '';
-    document.body.style.width = '';
-    document.body.style.top = '';
-    window.scroll(0, document.body.scrollTop);
-}
-  </script>
 </body>
 </html>
