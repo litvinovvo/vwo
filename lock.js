@@ -86,9 +86,9 @@ window.bodyScrollLock = new (function() {
 		}
 
 		// Stop the bouncing -- no parents are scrollable
-		console.log('no scrollable parent');
-		evt.preventDefault();
-		return false;
+		//console.log('no scrollable parent');
+		//evt.preventDefault();
+		//return false;
 	};
 
 	const handleTouchstart = function(evt) {
