@@ -71,6 +71,7 @@ window.bodyScrollLock = new (function() {
 	};
 
 	this.enable = function() {
+		if (enabled) { return; };
 		if (isiOS) {
 			// Listen to a couple key touch events
 			window.addEventListener('touchstart', handleTouchstart, supportsPassiveOption ? { passive : false } : false);
@@ -83,6 +84,7 @@ window.bodyScrollLock = new (function() {
 	};
 
 	this.disable = function() {
+		if (!enabled) { return; };
 		if (isiOS) {
 			// Stop listening
 			window.removeEventListener('touchstart', handleTouchstart, false);
