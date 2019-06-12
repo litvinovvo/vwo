@@ -48,7 +48,7 @@ window.bodyScrollLock = new (function() {
 				// Determine if the user is trying to scroll past the top or bottom
 				// In this case, the window will bounce, so we have to prevent scrolling completely
 				const isAtTop = (startY <= curY && el.scrollTop === 0);
-				const isAtBottom = (startY >= curY && el.scrollHeight - el.scrollTop === height);
+				const isAtBottom = (startY >= curY && el.scrollHeight - el.scrollTop <= el.clientHeight);
 
 				// Stop a bounce bug when at the bottom or top of the scrollable element
 				if (isAtTop || isAtBottom) {
