@@ -33,7 +33,7 @@ window.bodyScrollLock = new (function() {
 		console.log('handle move', el);
 
 		// Check all parent elements for scrollability
-		while (el !== document.body && el !== document) {
+		//while (el !== document.body && el !== document) {
 			// Get some style properties
 			
 			const style = window.getComputedStyle(el);
@@ -60,7 +60,7 @@ window.bodyScrollLock = new (function() {
 			
 			console.log('scrollable', el, isScrollable, canScroll);
 
-			if (isScrollable && canScroll) {
+			//if (isScrollable && canScroll) {
 				const isTargetElementTotallyScrolled = el.scrollHeight - el.scrollTop <= el.clientHeight;
 				const clientY = event.targetTouches[0].clientY - startY;
 
@@ -78,12 +78,12 @@ window.bodyScrollLock = new (function() {
 				  evt.stopPropagation();
 				  return true;
 				
-			}
+			//}
 
 			// Test the next parent
-			el = el.parentNode;
-			console.log('next', el);
-		}
+			//el = el.parentNode;
+			//console.log('next', el);
+		//}
 
 		// Stop the bouncing -- no parents are scrollable
 		//console.log('no scrollable parent');
@@ -108,8 +108,9 @@ window.bodyScrollLock = new (function() {
 		if (isiOS) {
 			// Listen to a couple key touch events
 			console.log('add event');
-			window.addEventListener('touchstart', handleTouchstart, { passive : false });
-			window.addEventListener('touchmove', handleTouchmove, { passive : false });
+			const content = document.querySelector('.content');
+			content.addEventListener('touchstart', handleTouchstart, { passive : false });
+			content.addEventListener('touchmove', handleTouchmove, { passive : false });
 		} else {
 			document.body.style.overflow = 'hidden';
 		}
@@ -122,8 +123,9 @@ window.bodyScrollLock = new (function() {
 		if (isiOS) {
 			// Stop listening
 			console.log('remove events');
-			window.removeEventListener('touchstart', handleTouchstart, false);
-			window.removeEventListener('touchmove', handleTouchmove, false);
+			const content = document.querySelector('.content');
+			content.removeEventListener('touchstart', handleTouchstart, false);
+			content.removeEventListener('touchmove', handleTouchmove, false);
 		} else {
 			document.body.style.overflow = '';
 		}
