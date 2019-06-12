@@ -33,6 +33,26 @@
     1: [
       function(require, module, exports) {
         const bodyScrollLock = require('../../lib/bodyScrollLock.js');
+        
+        const disableBodyScrollButton = document.querySelector('.disable');
+const enableBodyScrollButton = document.querySelector('.enable');
+//const statusElement = document.querySelector('.bodyScrollLockStatus');
+
+disableBodyScrollButton.onclick = function() {
+  console.info('disableBodyScrollButton');
+  bodyScrollLock.disableBodyScroll(document.querySelector('.content'));
+
+  //statusElement.innerHTML = ' &mdash; Scroll Locked';
+  //statusElement.style.color = 'red';
+};
+
+enableBodyScrollButton.onclick = function() {
+  console.info('enableBodyScrollButton');
+  bodyScrollLock.enableBodyScroll(document.querySelector('.content'));
+
+  //statusElement.innerHTML = ' &mdash; Scroll Unlocked';
+  //statusElement.style.color = '';
+};
 
         
       },
