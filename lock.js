@@ -41,10 +41,6 @@ window.bodyScrollLock = new (function() {
 		  return true;
 	};
 
-	function handleTouchstart(event) {
-		startY = event.targetTouches[0].clientY;
-	};
-
 	this.enable = function() {
 		if (enabled) { return; };
 		if (isiOS) {
@@ -53,7 +49,7 @@ window.bodyScrollLock = new (function() {
 			const content = document.querySelector('.content');
 			content.ontouchstart = event => {
 				if (event.targetTouches.length === 1) {
-				  handleTouchstart(event);
+				   startY = event.targetTouches[0].clientY;
 				}
 			};
 			content.ontouchmove = event => {
