@@ -1,3 +1,4 @@
+// https://github.com/lazd/iNoBounce/
 window.bodyScrollLock = new (function() {
 	const isiOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 	// Stores the Y position where the touch started
