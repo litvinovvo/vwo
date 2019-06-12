@@ -12,10 +12,10 @@ window.bodyScrollLock = new (function() {
 		let el = evt.target;
 
 		// Allow zooming
-		const zoom = window.innerWidth / window.document.documentElement.clientWidth;
-		if (evt.touches.length > 1 || zoom !== 1) {
-			return;
-		}
+// 		const zoom = window.innerWidth / window.document.documentElement.clientWidth;
+// 		if (evt.touches.length > 1 || zoom !== 1) {
+// 			return;
+// 		}
 
 		// Check all parent elements for scrollability
 		while (el !== document.body && el !== document) {
