@@ -2,7 +2,7 @@
 window.bodyScrollLock = new (function() {
 	const isiOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 	// Stores the Y position where the touch started
-	let startY = 0;
+	let startY = -1;
 
 	// Store enabled status
 	let enabled = false;
@@ -30,7 +30,7 @@ window.bodyScrollLock = new (function() {
 // 		if (evt.touches.length > 1 || zoom !== 1) {
 // 			return;
 // 		}
-		console.log('handle move', el);
+		//console.log('handle move', el);
 
 		// Check all parent elements for scrollability
 		//while (el !== document.body && el !== document) {
@@ -96,18 +96,18 @@ window.bodyScrollLock = new (function() {
 		  // detect single touch
 		  // initialClientY = event.targetTouches[0].clientY;
 		  startY = evt.targetTouches[0].clientY;
-		  console.log('touch start', startY);
+		  //console.log('touch start', startY);
 		}
 		
 		//startY = evt.touches ? evt.touches[0].screenY : evt.screenY;
-		console.log('touch start', startY);
+		//console.log('touch start', startY);
 	};
 
 	this.enable = function() {
 		if (enabled) { return; };
 		if (isiOS) {
 			// Listen to a couple key touch events
-			console.log('add event');
+			//console.log('add event');
 			const content = document.querySelector('.content');
 			content.addEventListener('touchstart', handleTouchstart, { passive : false });
 			content.addEventListener('touchmove', handleTouchmove, { passive : false });
@@ -122,7 +122,7 @@ window.bodyScrollLock = new (function() {
 		if (!enabled) { return; };
 		if (isiOS) {
 			// Stop listening
-			console.log('remove events');
+			// console.log('remove events');
 			const content = document.querySelector('.content');
 			content.removeEventListener('touchstart', handleTouchstart, false);
 			content.removeEventListener('touchmove', handleTouchmove, false);
