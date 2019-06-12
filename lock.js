@@ -74,8 +74,8 @@ window.bodyScrollLock = new (function() {
 		if (enabled) { return; };
 		if (isiOS) {
 			// Listen to a couple key touch events
-			window.addEventListener('touchstart', handleTouchstart, supportsPassiveOption ? { passive : false } : false);
-			window.addEventListener('touchmove', handleTouchmove, supportsPassiveOption ? { passive : false } : false);
+			window.addEventListener('touchstart', handleTouchstart, { passive : false });
+			window.addEventListener('touchmove', handleTouchmove, { passive : false });
 		} else {
 			document.body.style.overflow = 'hidden';
 		}
