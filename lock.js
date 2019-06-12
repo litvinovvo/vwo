@@ -10,7 +10,6 @@ window.bodyScrollLock = new (function() {
 	const handleTouchmove = function(evt) {
 		// Get the element that was scrolled upon
 		let el = evt.target;
-		alert(el);
 		// Allow zooming
 // 		const zoom = window.innerWidth / window.document.documentElement.clientWidth;
 // 		if (evt.touches.length > 1 || zoom !== 1) {
