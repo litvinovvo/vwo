@@ -13,8 +13,8 @@ window.bodyScrollLock = new (function() {
 	  return false;
 	};
 
-	const handleTouchmove = function(evt) {
-		let el = evt.target;
+	const handleTouchmove = function(event) {
+		let el = event.target;
 		const isTargetElementTotallyScrolled = el.scrollHeight - el.scrollTop <= el.clientHeight;
 		const clientY = event.targetTouches[0].clientY - startY;
 
@@ -24,12 +24,12 @@ window.bodyScrollLock = new (function() {
 		  if (isTargetElementTotallyScrolled && clientY < 0) {
 			return preventDefault(event);
 		  }
-		  evt.stopPropagation();
+		  event.stopPropagation();
 		  return true;
 	};
 
-	const handleTouchstart = function(evt) {
-		startY = evt.targetTouches[0].clientY;
+	const handleTouchstart = function(event) {
+		startY = event.targetTouches[0].clientY;
 	};
 
 	this.enable = function() {
@@ -39,12 +39,12 @@ window.bodyScrollLock = new (function() {
 			//console.log('add event');
 			const content = document.querySelector('.content');
 			content.ontouchstart = event => {
-				if (evt.targetTouches.length === 1) {
+				if (event.targetTouches.length === 1) {
 				  handleTouchstart(event);
 				}
 			};
 			content.ontouchmove = event => {
-				if (evt.targetTouches.length === 1) {
+				if (event.targetTouches.length === 1) {
 				  handleTouchmove(event);
 				}
 			};
