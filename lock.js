@@ -2,6 +2,7 @@
 window.bodyScrollLock = new (function() {
 	const isiOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 	let startY = -1;
+	let scrollableElement = false;
 
 	// Store enabled status
 	let enabled = false;
@@ -27,11 +28,10 @@ window.bodyScrollLock = new (function() {
 	};
 
 	function handleTouchmove(event) {
-		let el = event.target;
-		const isTargetElementTotallyScrolled = el.scrollHeight - el.scrollTop <= el.clientHeight;
+		const isTargetElementTotallyScrolled = scrollableElement.scrollHeight - scrollableElement.scrollTop <= scrollableElement.clientHeight;
 		const clientY = event.targetTouches[0].clientY - startY;
 
-		  if (el.scrollTop === 0 && clientY > 0) {
+		  if (scrollableElement.scrollTop === 0 && clientY > 0) {
 			return preventDefault(event);
 		  }
 		  if (isTargetElementTotallyScrolled && clientY < 0) {
@@ -41,18 +41,19 @@ window.bodyScrollLock = new (function() {
 		  return true;
 	};
 
-	this.enable = function() {
+	this.enable = function(element) {
+		scrollableElement = element;
 		if (enabled) { return; };
 
 			// Listen to a couple key touch events
 			//console.log('add event');
-			const content = document.querySelector('.content');
-			content.ontouchstart = event => {
+			//const content = document.querySelector('.content');
+			scrollableElement.ontouchstart = event => {
 				if (event.targetTouches.length === 1) {
 				   startY = event.targetTouches[0].clientY;
 				}
 			};
-			content.ontouchmove = event => {
+			scrollableElement.ontouchmove = event => {
 				if (event.targetTouches.length === 1) {
 				  handleTouchmove(event);
 				}
@@ -65,9 +66,9 @@ window.bodyScrollLock = new (function() {
 	this.disable = function() {
 		if (!enabled) { return; };
 
-			const content = document.querySelector('.content');
-			content.ontouchstart = null;
-			content.ontouchmove = null;
+			//const content = document.querySelector('.content');
+			scrollableElement.ontouchstart = null;
+			scrollableElement.ontouchmove = null;
 			document.removeEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined);
 
 		enabled = false;
