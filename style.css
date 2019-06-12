@@ -30,4 +30,5 @@ body {
 .content {
     background-color: lavenderblush;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
