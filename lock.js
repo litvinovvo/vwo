@@ -65,7 +65,7 @@ window.bodyScrollLock = new (function() {
 				const clientY = event.targetTouches[0].clientY - startY;
 
 
-				  if (el && el.scrollTop === 0 && clientY > 0) {
+				  if (el.scrollTop === 0 && clientY > 0) {
 				    // element is at the top of its scroll
 				    return preventDefault(evt);
 				  }
