@@ -5,7 +5,20 @@ window.bodyScrollLock = new (function() {
 
 	// Store enabled status
 	let enabled = false;
-	const preventDefault = rawEvent => {
+	
+	let hasPassiveEvents = false;
+	if (typeof window !== 'undefined') {
+	  const passiveTestOptions = {
+	    get passive() {
+	      hasPassiveEvents = true;
+	      return undefined;
+	    }
+	  };
+	  window.addEventListener('testPassive', null, passiveTestOptions);
+	  window.removeEventListener('testPassive', null, passiveTestOptions);
+	}
+	
+	function preventDefault(event) {
 	  const e = rawEvent || window.event;
 	  if (e.touches.length > 1) return true;
 	  if (e.preventDefault) e.preventDefault();
@@ -13,7 +26,7 @@ window.bodyScrollLock = new (function() {
 	  return false;
 	};
 
-	const handleTouchmove = function(event) {
+	function handleTouchmove(event) {
 		let el = event.target;
 		const isTargetElementTotallyScrolled = el.scrollHeight - el.scrollTop <= el.clientHeight;
 		const clientY = event.targetTouches[0].clientY - startY;
@@ -28,7 +41,7 @@ window.bodyScrollLock = new (function() {
 		  return true;
 	};
 
-	const handleTouchstart = function(event) {
+	function handleTouchstart(event) {
 		startY = event.targetTouches[0].clientY;
 	};
 
@@ -48,7 +61,7 @@ window.bodyScrollLock = new (function() {
 				  handleTouchmove(event);
 				}
 			};
-			document.addEventListener('touchmove', preventDefault, { passive: false });
+			document.addEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined));
 		} else {
 			document.body.style.overflow = 'hidden';
 		}
@@ -61,7 +74,7 @@ window.bodyScrollLock = new (function() {
 			const content = document.querySelector('.content');
 			content.ontouchstart = null;
 			content.ontouchmove = null;
-			document.removeEventListener('touchmove', preventDefault, { passive: false });
+			document.removeEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined));
 		} else {
 			document.body.style.overflow = '';
 		}
