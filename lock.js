@@ -6,9 +6,23 @@ window.bodyScrollLock = new (function() {
 
 	// Store enabled status
 	let enabled = false;
+	
+	const preventDefault = rawEvent => {
+	  const e = rawEvent || window.event;
+
+	  // Do not prevent if the event has more than one touch (usually meaning this is a multi touch gesture like pinch to zoom)
+	  if (e.touches.length > 1) return true;
+
+	  if (e.preventDefault) e.preventDefault();
+
+	  return false;
+	};
 
 	const handleTouchmove = function(evt) {
 		// Get the element that was scrolled upon
+		if (evt.targetTouches.length !== 1) {
+		  return;
+		}
 		
 		let el = evt.target;
 		// Allow zooming
@@ -47,27 +61,23 @@ window.bodyScrollLock = new (function() {
 			console.log('scrollable', el, isScrollable, canScroll);
 
 			if (isScrollable && canScroll) {
-				// Get the current Y position of the touch
-				const curY = evt.touches ? evt.touches[0].screenY : evt.screenY;
+				const isTargetElementTotallyScrolled = el.scrollHeight - el.scrollTop <= el.clientHeight;
+				const clientY = event.targetTouches[0].clientY - startY;
 
-				// Determine if the user is trying to scroll past the top or bottom
-				// In this case, the window will bounce, so we have to prevent scrolling completely
-				const isAtTop = (startY <= curY && el.scrollTop === 0);
-				const isAtBottom = (startY >= curY && el.scrollHeight - el.scrollTop <= el.clientHeight);
+
+				  if (el && el.scrollTop === 0 && clientY > 0) {
+				    // element is at the top of its scroll
+				    return preventDefault(evt);
+				  }
+
+				  if (isTargetElementTotallyScrolled && clientY < 0) {
+				    // element is at the top of its scroll
+				    return preventDefault(evt);
+				  }
+
+				  evt.stopPropagation();
+				  return true;
 				
-				console.log('is a top', startY <= curY, el.scrollTop);
-				console.log('is a bottom', startY >= curY, el.scrollHeight - el.scrollTop, el.clientHeight);
-
-				// Stop a bounce bug when at the bottom or top of the scrollable element
-				if (isAtTop || isAtBottom) {
-					console.log('prevent');
-					evt.preventDefault();
-				}
-
-				// No need to continue up the DOM, we've done our job
-				console.log('stop prop, return');
-				evt.stopPropagation();
-				return;
 			}
 
 			// Test the next parent
@@ -78,12 +88,18 @@ window.bodyScrollLock = new (function() {
 		// Stop the bouncing -- no parents are scrollable
 		console.log('no scrollable parent');
 		evt.preventDefault();
+		return false;
 	};
 
 	const handleTouchstart = function(evt) {
-		// Store the first Y position of the touch
+		if (evt.targetTouches.length === 1) {
+		  // detect single touch
+		  // initialClientY = event.targetTouches[0].clientY;
+		  startY = evt.targetTouches[0].clientY;
+		  console.log('touch start', startY);
+		}
 		
-		startY = evt.touches ? evt.touches[0].screenY : evt.screenY;
+		//startY = evt.touches ? evt.touches[0].screenY : evt.screenY;
 		console.log('touch start', startY);
 	};
 
