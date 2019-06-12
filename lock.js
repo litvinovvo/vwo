@@ -9,12 +9,14 @@ window.bodyScrollLock = new (function() {
 
 	const handleTouchmove = function(evt) {
 		// Get the element that was scrolled upon
+		
 		let el = evt.target;
 		// Allow zooming
 // 		const zoom = window.innerWidth / window.document.documentElement.clientWidth;
 // 		if (evt.touches.length > 1 || zoom !== 1) {
 // 			return;
 // 		}
+		console.log('handle move', el);
 
 		// Check all parent elements for scrollability
 		while (el !== document.body && el !== document) {
@@ -24,11 +26,13 @@ window.bodyScrollLock = new (function() {
 
 			if (!style) {
 				// If we've encountered an element we can't compute the style for, get out
+				console.log('no style');
 				break;
 			}
 
 			// Ignore range input element
 			if (el.nodeName === 'INPUT' && el.getAttribute('type') === 'range') {
+				console.log('input');
 				return;
 			}
 
@@ -39,6 +43,8 @@ window.bodyScrollLock = new (function() {
 			// Determine if the element should scroll
 			const isScrollable = scrolling === 'touch' && (overflowY === 'auto' || overflowY === 'scroll');
 			const canScroll = el.scrollHeight > el.offsetHeight;
+			
+			console.log('scrollable', el, isScrollable, canScroll);
 
 			if (isScrollable && canScroll) {
 				// Get the current Y position of the touch
@@ -48,33 +54,44 @@ window.bodyScrollLock = new (function() {
 				// In this case, the window will bounce, so we have to prevent scrolling completely
 				const isAtTop = (startY <= curY && el.scrollTop === 0);
 				const isAtBottom = (startY >= curY && el.scrollHeight - el.scrollTop <= el.clientHeight);
+				
+				console.log('is a top', startY <= curY, el.scrollTop);
+				console.log('is a bottom', startY >= curY, el.scrollHeight - el.scrollTop, el.clientHeight);
 
 				// Stop a bounce bug when at the bottom or top of the scrollable element
 				if (isAtTop || isAtBottom) {
+					console.log('prevent');
 					evt.preventDefault();
 				}
 
 				// No need to continue up the DOM, we've done our job
+				console.log('stop prop, return');
+				evt.stopPropagation();
 				return;
 			}
 
 			// Test the next parent
 			el = el.parentNode;
+			console.log('next', el);
 		}
 
 		// Stop the bouncing -- no parents are scrollable
+		console.log('no scrollable parent');
 		evt.preventDefault();
 	};
 
 	const handleTouchstart = function(evt) {
 		// Store the first Y position of the touch
+		
 		startY = evt.touches ? evt.touches[0].screenY : evt.screenY;
+		console.log('touch start', startY);
 	};
 
 	this.enable = function() {
 		if (enabled) { return; };
 		if (isiOS) {
 			// Listen to a couple key touch events
+			console.log('add event');
 			window.addEventListener('touchstart', handleTouchstart, { passive : false });
 			window.addEventListener('touchmove', handleTouchmove, { passive : false });
 		} else {
@@ -88,6 +105,7 @@ window.bodyScrollLock = new (function() {
 		if (!enabled) { return; };
 		if (isiOS) {
 			// Stop listening
+			console.log('remove events');
 			window.removeEventListener('touchstart', handleTouchstart, false);
 			window.removeEventListener('touchmove', handleTouchmove, false);
 		} else {
