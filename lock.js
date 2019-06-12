@@ -43,7 +43,7 @@ window.bodyScrollLock = new (function() {
 
 	this.enable = function() {
 		if (enabled) { return; };
-		if (isiOS) {
+
 			// Listen to a couple key touch events
 			//console.log('add event');
 			const content = document.querySelector('.content');
@@ -58,22 +58,18 @@ window.bodyScrollLock = new (function() {
 				}
 			};
 			document.addEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined));
-		} else {
-			document.body.style.overflow = 'hidden';
-		}
+
 		enabled = true;
 	};
 
 	this.disable = function() {
 		if (!enabled) { return; };
-		if (isiOS) {
+
 			const content = document.querySelector('.content');
 			content.ontouchstart = null;
 			content.ontouchmove = null;
 			document.removeEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined));
-		} else {
-			document.body.style.overflow = '';
-		}
+
 		enabled = false;
 	};
 
