@@ -14,30 +14,21 @@ window.bodyScrollLock = new (function() {
 	};
 
 	const handleTouchmove = function(evt) {
-		if (evt.targetTouches.length !== 1) {
-		  return;
-		}
-		
 		let el = evt.target;
 		const isTargetElementTotallyScrolled = el.scrollHeight - el.scrollTop <= el.clientHeight;
 		const clientY = event.targetTouches[0].clientY - startY;
 
 		  if (el.scrollTop === 0 && clientY > 0) {
-		    evt.preventDefault();
-		    return false;
+			return preventDefault(event);
 		  }
 		  if (isTargetElementTotallyScrolled && clientY < 0) {
-		    evt.preventDefault();
-		    return false;
+			return preventDefault(event);
 		  }
 		  evt.stopPropagation();
 		  return true;
 	};
 
 	const handleTouchstart = function(evt) {
-		if (evt.targetTouches.length !== 1) {
-			return;
-		}
 		startY = evt.targetTouches[0].clientY;
 	};
 
@@ -47,9 +38,17 @@ window.bodyScrollLock = new (function() {
 			// Listen to a couple key touch events
 			//console.log('add event');
 			const content = document.querySelector('.content');
-			content.ontouchstart = event => handleTouchstart(event);
-			content.ontouchmove = event => handleTouchmove(event);
-			document.addEventListener('touchmove', event => event.preventDefault(), { passive: false });
+			content.ontouchstart = event => {
+				if (evt.targetTouches.length === 1) {
+				  handleTouchstart(event);
+				}
+			};
+			content.ontouchmove = event => {
+				if (evt.targetTouches.length === 1) {
+				  handleTouchmove(event);
+				}
+			};
+			document.addEventListener('touchmove', preventDefault, { passive: false });
 		} else {
 			document.body.style.overflow = 'hidden';
 		}
@@ -62,7 +61,7 @@ window.bodyScrollLock = new (function() {
 			const content = document.querySelector('.content');
 			content.ontouchstart = null;
 			content.ontouchmove = null;
-			document.removeEventListener('touchmove', event => event.preventDefault(), { passive: false });
+			document.removeEventListener('touchmove', preventDefault, { passive: false });
 		} else {
 			document.body.style.overflow = '';
 		}
