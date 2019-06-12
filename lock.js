@@ -36,29 +36,29 @@ window.bodyScrollLock = new (function() {
 		//while (el !== document.body && el !== document) {
 			// Get some style properties
 			
-			const style = window.getComputedStyle(el);
+// 			const style = window.getComputedStyle(el);
 
-			if (!style) {
-				// If we've encountered an element we can't compute the style for, get out
-				console.log('no style');
-				break;
-			}
+// 			if (!style) {
+// 				// If we've encountered an element we can't compute the style for, get out
+// 				console.log('no style');
+// 				break;
+// 			}
 
 			// Ignore range input element
-			if (el.nodeName === 'INPUT' && el.getAttribute('type') === 'range') {
-				console.log('input');
-				return;
-			}
+// 			if (el.nodeName === 'INPUT' && el.getAttribute('type') === 'range') {
+// 				console.log('input');
+// 				return;
+// 			}
 
-			const scrolling = style.getPropertyValue('-webkit-overflow-scrolling');
-			const overflowY = style.getPropertyValue('overflow-y');
-			const height = parseInt(style.getPropertyValue('height'), 10);
+// 			const scrolling = style.getPropertyValue('-webkit-overflow-scrolling');
+// 			const overflowY = style.getPropertyValue('overflow-y');
+// 			const height = parseInt(style.getPropertyValue('height'), 10);
 
-			// Determine if the element should scroll
-			const isScrollable = scrolling === 'touch' && (overflowY === 'auto' || overflowY === 'scroll');
-			const canScroll = el.scrollHeight > el.offsetHeight;
+// 			// Determine if the element should scroll
+// 			const isScrollable = scrolling === 'touch' && (overflowY === 'auto' || overflowY === 'scroll');
+// 			const canScroll = el.scrollHeight > el.offsetHeight;
 			
-			console.log('scrollable', el, isScrollable, canScroll);
+// 			console.log('scrollable', el, isScrollable, canScroll);
 
 			//if (isScrollable && canScroll) {
 				const isTargetElementTotallyScrolled = el.scrollHeight - el.scrollTop <= el.clientHeight;
