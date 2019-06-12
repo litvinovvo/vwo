@@ -1,4 +1,5 @@
-(function() {
+window.bodyScrollLock = new (function() {
+	const isiOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 	// Stores the Y position where the touch started
 	let startY = 0;
 
@@ -70,20 +71,30 @@
 	};
 
 	this.enable = function() {
-		// Listen to a couple key touch events
-		window.addEventListener('touchstart', handleTouchstart, supportsPassiveOption ? { passive : false } : false);
-		window.addEventListener('touchmove', handleTouchmove, supportsPassiveOption ? { passive : false } : false);
+		if (isiOS) {
+			// Listen to a couple key touch events
+			window.addEventListener('touchstart', handleTouchstart, supportsPassiveOption ? { passive : false } : false);
+			window.addEventListener('touchmove', handleTouchmove, supportsPassiveOption ? { passive : false } : false);
+		} else {
+			document.body.style.overflow = 'hidden';
+		}
+
 		enabled = true;
 	};
 
 	this.disable = function() {
-		// Stop listening
-		window.removeEventListener('touchstart', handleTouchstart, false);
-		window.removeEventListener('touchmove', handleTouchmove, false);
+		if (isiOS) {
+			// Stop listening
+			window.removeEventListener('touchstart', handleTouchstart, false);
+			window.removeEventListener('touchmove', handleTouchmove, false);
+		} else {
+			document.body.style.overflow = '';
+		}
+		
 		enabled = false;
 	};
 
 	this.isEnabled = function() {
 		return enabled;
 	};
-}());
+});
