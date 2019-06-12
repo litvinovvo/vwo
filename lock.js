@@ -57,7 +57,7 @@ window.bodyScrollLock = new (function() {
 				  handleTouchmove(event);
 				}
 			};
-			document.addEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined));
+			document.addEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined);
 
 		enabled = true;
 	};
@@ -68,7 +68,7 @@ window.bodyScrollLock = new (function() {
 			const content = document.querySelector('.content');
 			content.ontouchstart = null;
 			content.ontouchmove = null;
-			document.removeEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined));
+			document.removeEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined);
 
 		enabled = false;
 	};
