@@ -18,7 +18,7 @@ window.bodyScrollLock = new (function() {
 	  window.removeEventListener('testPassive', null, passiveTestOptions);
 	}
 	
-	function preventDefault(event) {
+	function preventDefault(rawEvent) {
 	  const e = rawEvent || window.event;
 	  if (e.touches.length > 1) return true;
 	  if (e.preventDefault) e.preventDefault();
