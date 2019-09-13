@@ -1066,18 +1066,15 @@ sup {
 }
 
 .__ie .preloader {
-    -webkit-animation: rotate-ie .8s linear infinite;
-    animation: rotate-ie .8s linear infinite
+
 }
 
 .__ie .preloader .preloader_animated-circle {
-    -webkit-animation: none;
-    animation: none
+
 }
 
 .__success.__ie .preloader {
-    -webkit-animation: none;
-    animation: none
+
 }
 
 .preloader_background-circle {
@@ -1102,8 +1099,7 @@ sup {
     stroke-width: 8px;
     stroke-dasharray: 33px 99px;
     stroke-dashoffset: 49px;
-    -webkit-animation: rotate .8s linear infinite;
-    animation: rotate .8s linear infinite;
+
     -webkit-transition: all .3s ease;
     transition: all .3s ease
 }
@@ -1134,43 +1130,6 @@ sup {
     transition-delay: .3s
 }
 
-@-webkit-keyframes rotate {
- /* 
-    from {
-        stroke-dashoffset: 49px
-    }
-
-    to {
-        stroke-dashoffset: -83px
-    }
-      */
-}
-
-@keyframes rotate {
- /*   
- from {
-        stroke-dashoffset: 49px
-    }
-
-    to {
-        stroke-dashoffset: -83px
-    }
-    */
-}
-
-@-webkit-keyframes rotate-ie {
-    to {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg)
-    }
-}
-
-@keyframes rotate-ie {
-    to {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg)
-    }
-}
 
 .module-preloader {
     position: relative
