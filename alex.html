@@ -71,8 +71,64 @@
 		</script>
 		<!--
 		<script>window.stylesheets.push("//cdn-ds.com/builder2/fonts/Toyota Univers LT Std/styles.css");</script>
+-->
+<style>
+@font-face {
+    font-family: 'Toyota Univers LT Std';
+    src: url('UniversLTStdLightItalic.woff2') format('woff2'),
+        url('UniversLTStdLightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Toyota Univers LT Std';
+    src: url('UniversLTStdRegular.woff2') format('woff2'),
+        url('UniversLTStdRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+    font-family: 'Toyota Univers LT Std';
+    src: url('UniversLTStdLight.woff2') format('woff2'),
+        url('UniversLTStdLight.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+    font-family: 'Toyota Univers LT Std';
+    src: url('UniversLTStdBoldItalic.woff2') format('woff2'),
+        url('UniversLTStdBoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+    font-family: 'Toyota Univers LT Std';
+    src: url('UniversLTStdBold.woff2') format('woff2'),
+        url('UniversLTStdBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+    font-family: 'Toyota Univers LT Std';
+    src: url('UniversLTStdItalic.woff2') format('woff2'),
+        url('UniversLTStdItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+	font-display: swap;
+}
+</style>
 		
---><script>window.stylesheets.push("//cdn-ds.com/e6-static/stylesheets/icons_css-e6-icons-aa83477753266ff7c094617a95bdd5d0.css");</script>
+<script>window.stylesheets.push("//cdn-ds.com/e6-static/stylesheets/icons_css-e6-icons-aa83477753266ff7c094617a95bdd5d0.css");</script>
 		
 		
 		<script>window.stylesheets.push("//cdn-ds.com/e6-static/stylesheets/bootstrap_css-bootstrap-17aa9f83a1bdd827e170710ebe94c4e1.css");</script>
@@ -4639,6 +4695,7 @@ Copyright &copy; Alexander Toyota&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><strong><
 		<script>window.defaultFontName="Toyota Univers LT Std";
 </script><script>window.headingsFontName="Toyota Univers LT Std";
 </script>
+		<!--
 <script>var $jscomp=$jscomp||{};$jscomp.scope={};$jscomp.arrayIteratorImpl=function(b){var e=0;return function(){return e<b.length?{done:!1,value:b[e++]}:{done:!0}}};$jscomp.arrayIterator=function(b){return{next:$jscomp.arrayIteratorImpl(b)}};$jscomp.makeIterator=function(b){var e="undefined"!=typeof Symbol&&Symbol.iterator&&b[Symbol.iterator];return e?e.call(b):$jscomp.arrayIterator(b)};
 $jscomp.getGlobal=function(b){return"undefined"!=typeof window&&window===b?b:"undefined"!=typeof global&&null!=global?global:b};$jscomp.global=$jscomp.getGlobal(this);$jscomp.ASSUME_ES5=!1;$jscomp.ASSUME_NO_NATIVE_MAP=!1;$jscomp.ASSUME_NO_NATIVE_SET=!1;$jscomp.SIMPLE_FROUND_POLYFILL=!1;$jscomp.defineProperty=$jscomp.ASSUME_ES5||"function"==typeof Object.defineProperties?Object.defineProperty:function(b,e,a){b!=Array.prototype&&b!=Object.prototype&&(b[e]=a.value)};
 $jscomp.polyfill=function(b,e,a,g){if(e){a=$jscomp.global;b=b.split(".");for(g=0;g<b.length-1;g++){var d=b[g];d in a||(a[d]={});a=a[d]}b=b[b.length-1];g=a[b];e=e(g);e!=g&&null!=e&&$jscomp.defineProperty(a,b,{configurable:!0,writable:!0,value:e})}};$jscomp.FORCE_POLYFILL_PROMISE=!1;
@@ -4669,6 +4726,7 @@ window.defaultFontName);if(window.headingsFontName&&window.headingsFontName!==wi
 style:"italic"})];e.forEach(function(a){b.push(a.load(null,2E4))})}Promise.all(b).then(function(){document.body.classList.add("font-loaded");localStorage.setItem("fontLoaded",!0);for(var a=0,b=document.styleSheets.length,d=[],e;a<b;a++)(e=document.styleSheets[a].href)&&!~d.indexOf(e)&&~e.indexOf("//fonts.googleapis.com/css")&&(~decodeURI(e).indexOf(window.defaultFontName)||~decodeURI(e).indexOf(window.headingsFontName))&&d.push(e);localStorage.setItem("googleFontsUrl",JSON.stringify(d))}).catch(function(a){localStorage.removeItem("fontLoaded");
 window.console.warn(a)}).finally(function(){delete window.defaultFontName;delete window.headingsFontName})})();		
 </script>
+-->
 <!--
 <script>
 (function(d){var c=function(c,e,m){var g=d.document,a=g.createElement("link"),b;e?b=e:(b=(g.body||g.getElementsByTagName("head")[0]).childNodes,b=b[b.length-1]);var k=g.styleSheets;a.rel="stylesheet";a.href=c;a.media="only x";b.parentNode.insertBefore(a,e?b:b.nextSibling);var f=function(b){for(var c=a.href,h=k.length;h--;)if(k[h].href===c)return b();setTimeout(function(){f(b)})};a.onloadcssdefined=f;f(function(){a.media=m||"all"});return a};"undefined"!==typeof module?module.exports=c:d.loadCSS=c})("undefined"!==
@@ -4679,6 +4737,10 @@ g=window.stylesheets.length;for(e=0;e<m;e++)a=window.stylesheets[e],a.trim()&&!/
 </script>
 -->
 <script>
+(function(g){var c=function(c,e,k){var d=g.document,b=d.createElement("link"),a;e?a=e:(a=(d.body||d.getElementsByTagName("head")[0]).childNodes,a=a[a.length-1]);var h=d.styleSheets;b.rel="stylesheet";b.href=c;b.media="only x";a.parentNode.insertBefore(b,e?a:a.nextSibling);var f=function(a){for(var d=b.href,c=h.length;c--;)if(h[c].href===d)return a();setTimeout(function(){f(a)})};b.onloadcssdefined=f;f(function(){b.media=k||"all"});return b};"undefined"!==typeof module?module.exports=c:g.loadCSS=c})("undefined"!==
+typeof global?global:this);
+function onloadCSS(a,b){a.onload=function(){a.onload=null;b&&b.call(a)};if("isApplicationInstalled"in navigator&&"onloadcssdefined"in a)a.onloadcssdefined(b)};
+
 (function() {
 	'use strict';
 
