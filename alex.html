@@ -4668,7 +4668,7 @@ window.defaultFontName);if(window.headingsFontName&&window.headingsFontName!==wi
 style:"italic"})];e.forEach(function(a){b.push(a.load(null,2E4))})}Promise.all(b).then(function(){document.body.classList.add("font-loaded");localStorage.setItem("fontLoaded",!0);for(var a=0,b=document.styleSheets.length,d=[],e;a<b;a++)(e=document.styleSheets[a].href)&&!~d.indexOf(e)&&~e.indexOf("//fonts.googleapis.com/css")&&(~decodeURI(e).indexOf(window.defaultFontName)||~decodeURI(e).indexOf(window.headingsFontName))&&d.push(e);localStorage.setItem("googleFontsUrl",JSON.stringify(d))}).catch(function(a){localStorage.removeItem("fontLoaded");
 window.console.warn(a)}).finally(function(){delete window.defaultFontName;delete window.headingsFontName})})();		
 </script>
-
+<!--
 <script>
 (function(d){var c=function(c,e,m){var g=d.document,a=g.createElement("link"),b;e?b=e:(b=(g.body||g.getElementsByTagName("head")[0]).childNodes,b=b[b.length-1]);var k=g.styleSheets;a.rel="stylesheet";a.href=c;a.media="only x";b.parentNode.insertBefore(a,e?b:b.nextSibling);var f=function(b){for(var c=a.href,h=k.length;h--;)if(k[h].href===c)return b();setTimeout(function(){f(b)})};a.onloadcssdefined=f;f(function(){a.media=m||"all"});return a};"undefined"!==typeof module?module.exports=c:d.loadCSS=c})("undefined"!==
 typeof global?global:this);function onloadCSS(d,c){d.onload=function(){d.onload=null;c&&c.call(d)};if("isApplicationInstalled"in navigator&&"onloadcssdefined"in d)d.onloadcssdefined(c)}
@@ -4676,7 +4676,120 @@ typeof global?global:this);function onloadCSS(d,c){d.onload=function(){d.onload=
 e,m,g,a,b=0,k=document.createElement("div"),f=[],n=function(a,b){var c,d;b=b||{bubbles:!1,cancelable:!1,detail:void 0};c=document.createEvent("CustomEvent");c.initCustomEvent(a,b.bubbles,b.cancelable,b.detail);d=c.preventDefault;c.preventDefault=function(){d.call(this);try{Object.defineProperty(this,"defaultPrevented",{get:function(){return!0}})}catch(a){this.defaultPrevented=!0}};return c};n.prototype=window.Event.prototype;if("undefined"!==typeof window.stylesheets&&window.stylesheets.length){m=
 g=window.stylesheets.length;for(e=0;e<m;e++)a=window.stylesheets[e],a.trim()&&!/builder2\/fonts|googleapis\.com/.test(a)?(a=document.createElement("div"),a.setAttribute("id","a"+window.stylesheets[e].match(/([^/]+)\.css$/)[1]),f.push(a),k.appendChild(a)):g--,window.loadCSS(window.stylesheets[e],l),l.previousSibling.addEventListener("error",function(){b++});document.body.appendChild(k);d();delete window.stylesheets}else c()})();
 </script>
+-->
+<script>
+(function() {
+	'use strict';
 
+	var before = document.getElementById('lazyStylesPlaceholder');
+	var i,
+		length,
+		cssCount,
+		div,
+		href;
+	var loaded = 0;
+	var wrapper = document.createElement('div');
+	var divs = [];
+	var CustomEvent = function(event, params) {
+		var evt,
+			origPrevent;
+
+		params = params || {
+			bubbles: false,
+			cancelable: false,
+			detail: undefined
+		};
+
+		evt = document.createEvent('CustomEvent');
+		evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+		origPrevent = evt.preventDefault;
+		evt.preventDefault = function() {
+			origPrevent.call(this);
+
+			try {
+				Object.defineProperty(this, 'defaultPrevented', {
+					get: function() {
+						return true;
+					}
+				});
+			} catch (e) {
+				this.defaultPrevented = true;
+			}
+		};
+
+		return evt;
+	};
+
+	CustomEvent.prototype = window.Event.prototype;
+
+	if (typeof window.stylesheets !== 'undefined' && window.stylesheets.length) {
+		cssCount = window.stylesheets.length;
+		length = cssCount;
+
+		for (i = 0; i < length; i++) {
+			href = window.stylesheets[i];
+
+			if (href.trim() && !/builder2\/fonts|googleapis\.com/.test(href)) {
+				div = document.createElement('div');
+
+				div.setAttribute('id', 'a' + window.stylesheets[i].match(/([^/]+)\.css$/)[1]);
+				divs.push(div);
+				wrapper.appendChild(div);
+			} else {
+				cssCount--;
+			}
+
+			window.loadCSS(window.stylesheets[i], before);
+			/* jshint loopfunc:true */
+			before.previousSibling.addEventListener('error', function() {
+				loaded++;
+			});
+			/* jshint loopfunc:false */
+		}
+
+		document.body.appendChild(wrapper);
+		waiting();
+
+		delete window.stylesheets;
+	} else {
+		cssLoaded();
+	}
+
+	function waiting() {
+		setTimeout(cssLoaded, 300);
+		return;
+		var id = setInterval(function() {
+			var j = 0;
+			var divCount = divs.length;
+
+			for (; j < divCount; j++) {
+				if (divs[j] && divs[j].clientWidth === 0) {
+					divs[j] = false;
+
+					if (++loaded === cssCount) {
+						clearInterval(id);
+						wrapper.parentNode.removeChild(wrapper);
+						setTimeout(cssLoaded, 300);
+					}
+				}
+			}
+		}, 300);
+	}
+
+	function cssLoaded() {
+		document.body.dispatchEvent(new CustomEvent('cssloaded', {
+			bubbles: true
+		}));
+
+		document.body.setAttribute('data-css-loaded', 'true');
+		document.body.className = document.body.className ? document.body.className + ' __css-loaded' : '__css-loaded';
+
+		if (before !== null) {
+			document.head.removeChild(before);
+		}
+	}
+}());
+</script>
 
 
 		
