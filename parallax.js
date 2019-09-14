@@ -24,6 +24,7 @@ Moff.modules.create('Parallax', function() {
 		_winScrollTop;
 
 	this.init = () => {
+		if (IS_MOBILE) return;
 		_$parallaxElements = MODULE.$find(SEL.parallax);
 
 		Moff.event.on('container.lazy-background-set', ({ $container }) => {
