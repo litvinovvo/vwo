@@ -171,7 +171,7 @@ Moff.modules.create('Parallax', function() {
 	 * Set window scrollTop position
 	 */
 	function _setWindowScrollPos() {
-		_winScrollTop = document.documentElement.scrollTop || window.pageYOffset;
+		_winScrollTop = _winScrollTop ? (document.documentElement.scrollTop || window.pageYOffset) : 0;
 	}
 
 	/**
