@@ -136,7 +136,7 @@ Moff.modules.create('Parallax', function() {
 		_parallaxData[id] = {
 			id,
 			element,
-			parallaxSpeed: SPEED_CONFIGS[element.dataset.parallaxSpeed],
+			parallaxSpeed: SPEED_CONFIGS['normal'],
 			width: element.clientWidth,
 			height: element.clientHeight,
 			topOffset: element.offsetTop,
