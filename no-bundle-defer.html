@@ -4556,7 +4556,7 @@ function onloadCSS(a,b){a.onload=function(){a.onload=null;b&&b.call(a)};if("isAp
 		href;
 	var loaded = 0;
 	var wrapper = document.createElement('div');
-	//wrapper.style = "transform:translate3d(0,0,0);z-index:-1;position:fixed;display:block;top:0;";
+	wrapper.style = "transform:translate3d(0,0,0);z-index:-1;position:fixed;display:block;top:0;";
 	var divs = [];
 	var CustomEvent = function(event, params) {
 		var evt,
