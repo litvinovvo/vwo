@@ -19,7 +19,7 @@ Moff.modules.create('Fixed', function() {
 	 */
 	this.init = function() {
 		//_windowHeight = window.innerHeight;
-		_windowWidth = window.innerWidth;
+		//_windowWidth = window.innerWidth;
 		_$window = $(window);
 		_$window.on('resize.fixed', Moff.utils.debounce(() => {
 			if (Moff.detect.OS.iOS && _windowWidth === window.innerWidth) {
@@ -32,6 +32,7 @@ Moff.modules.create('Fixed', function() {
 
 	this.initFixed = function($element, options = {}) {
   _windowHeight = _windowHeight || window.innerHeight;
+		_windowWidth = _windowWidth || window.innerWidth;
 		const position = (options.position === undefined || !_isCorrectPosition(options.position)) ? RIGHT : options.position;
 		let index = (options.index === undefined || Number.isNaN(Number(options.index))) ? _fixedElements[position].length : Number(options.index);
 
