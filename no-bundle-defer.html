@@ -5410,7 +5410,7 @@ function onloadCSS(a, b) {
 					divs[j] = false;
 					if (++loaded === cssCount) {
 						clearInterval(id);
-						wrapper.parentNode.removeChild(wrapper);
+						//wrapper.parentNode.removeChild(wrapper);
 						console.log('set timeout for css loaded');
 						setTimeout(cssLoaded, 300);
 					}
@@ -5426,7 +5426,7 @@ function onloadCSS(a, b) {
 		document.body.setAttribute('data-css-loaded', 'true');
 		document.body.className = document.body.className ? document.body.className + ' __css-loaded' : '__css-loaded';
 		if (before !== null) {
-			document.head.removeChild(before);
+			//document.head.removeChild(before);
 		}
 	}
 }());
