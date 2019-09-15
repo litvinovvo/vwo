@@ -5397,7 +5397,7 @@ g=window.stylesheets.length;for(e=0;e<m;e++)a=window.stylesheets[e],a.trim()&&!/
 		href;
 	var loaded = 0;
 	var wrapper = document.createElement('div');
-	wrapper.style = "transform:translate3d(0,0,0);z-index:-1;position:fixed;display:block;top:0;";
+	wrapper.style = "transform:translate3d(0,0,0);z-index:-1;position:fixed;display:block;top:0,left:0,right:0;";
 	var divs = [];
 	var CustomEvent = function(event, params) {
 		var evt,
@@ -5452,6 +5452,7 @@ g=window.stylesheets.length;for(e=0;e<m;e++)a=window.stylesheets[e],a.trim()&&!/
 		waiting();
 		delete window.stylesheets;
 	} else {
+		console.log('css loaded');
 		cssLoaded();
 	}
 	function waiting() {
@@ -5459,6 +5460,7 @@ g=window.stylesheets.length;for(e=0;e<m;e++)a=window.stylesheets[e],a.trim()&&!/
 			var j = 0;
 			var divCount = divs.length;
 			for (; j < divCount; j++) {
+				console.log('waiting', divs[j], divs[j].clientWidth);
 				if (divs[j] && divs[j].clientWidth === 0) {
 					divs[j] = false;
 					if (++loaded === cssCount) {
