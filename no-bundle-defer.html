@@ -5329,7 +5329,7 @@ g=window.stylesheets.length;for(e=0;e<m;e++)a=window.stylesheets[e],a.trim()&&!/
 		}
 		ss.rel = "stylesheet";
 		ss.href = href;
-		ss.onload = this.onload=null;
+		//ss.onload = this.onload=null;
 		// temporarily set media to something inapplicable to ensure it'll fetch without blocking render
 		ss.media = "only x";
 
@@ -5362,7 +5362,8 @@ g=window.stylesheets.length;for(e=0;e<m;e++)a=window.stylesheets[e],a.trim()&&!/
 			});
 		};
 
-		function loadCB(){
+		function loadCB() {
+			console.log('load CB', ss);
 			if( ss.addEventListener ){
 				ss.removeEventListener( "load", loadCB );
 			}
