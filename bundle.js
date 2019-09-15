@@ -269,6 +269,7 @@ Moff.modules.create('Parallax', function() {
 		});
 
 		MODULE.afterCssLoaded(() => {
+			console.log('after css loaded callback in parallax');
 			_handleEvents();
 		});
 	};
