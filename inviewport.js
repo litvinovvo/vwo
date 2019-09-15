@@ -32,11 +32,13 @@ Moff.modules.create("InViewport", function() {
     }
     function g(a) {
         //a = a.getBoundingClientRect();
-        a = {left: 0, bottom: 0, right: 0, top: 0};
-        var d = a.left
-          , b = a.bottom
-          , c = a.right;
-        return a.top < window.innerHeight && 0 < b && d < window.innerWidth && 0 < c
+
+        //var d = a.left
+        //  , b = a.bottom
+        //  , c = a.right;
+        //return a.top < window.innerHeight && 0 < b && d < window.innerWidth && 0 < c
+        
+        return true;
     }
     var c = [];
     this.init = function() {
