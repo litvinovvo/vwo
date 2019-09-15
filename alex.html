@@ -4963,8 +4963,6 @@ function onloadCSS(a,b){a.onload=function(){a.onload=null;b&&b.call(a)};if("isAp
 	}
 
 	function waiting() {
-		setTimeout(cssLoaded, 300);
-		return;
 		var id = setInterval(function() {
 			var j = 0;
 			var divCount = divs.length;
