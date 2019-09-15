@@ -38,7 +38,7 @@ Moff.modules.create("InViewport", function() {
         //  , c = a.right;
         //return a.top < window.innerHeight && 0 < b && d < window.innerWidth && 0 < c
         
-        return true;
+        return false;
     }
     var c = [];
     this.init = function() {
