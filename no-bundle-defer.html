@@ -5302,6 +5302,7 @@ g=window.stylesheets.length;for(e=0;e<m;e++)a=window.stylesheets[e],a.trim()&&!/
         b.rel = "stylesheet";
         b.href = c;
         b.media = "only x";
+	b.onload=this.onload=null;
         a.parentNode.insertBefore(b, e ? a : a.nextSibling);
         var f = function(a) {
             for (var d = b.href, c = h.length; c--;)
