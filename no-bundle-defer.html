@@ -5292,9 +5292,42 @@ g=window.stylesheets.length;for(e=0;e<m;e++)a=window.stylesheets[e],a.trim()&&!/
 </script>
 -->
 <script>
-(function(g){var c=function(c,e,k){var d=g.document,b=d.createElement("link"),a;e?a=e:(a=(d.body||d.getElementsByTagName("head")[0]).childNodes,a=a[a.length-1]);var h=d.styleSheets;b.rel="stylesheet";b.href=c;b.media="only x";a.parentNode.insertBefore(b,e?a:a.nextSibling);var f=function(a){for(var d=b.href,c=h.length;c--;)if(h[c].href===d)return a();setTimeout(function(){f(a)})};b.onloadcssdefined=f;f(function(){b.media=k||"all"});return b};"undefined"!==typeof module?module.exports=c:g.loadCSS=c})("undefined"!==
-typeof global?global:this);
-function onloadCSS(a,b){a.onload=function(){a.onload=null;b&&b.call(a)};if("isApplicationInstalled"in navigator&&"onloadcssdefined"in a)a.onloadcssdefined(b)};
+(function(g) {
+    var c = function(c, e, k) {
+        var d = g.document,
+            b = d.createElement("link"),
+            a;
+        e ? a = e : (a = (d.body || d.getElementsByTagName("head")[0]).childNodes, a = a[a.length - 1]);
+        var h = d.styleSheets;
+        b.rel = "stylesheet";
+        b.href = c;
+        b.media = "only x";
+        a.parentNode.insertBefore(b, e ? a : a.nextSibling);
+        var f = function(a) {
+            for (var d = b.href, c = h.length; c--;)
+                if (h[c].href === d) return a();
+            setTimeout(function() {
+                f(a)
+            })
+        };
+        b.onloadcssdefined = f;
+        f(function() {
+            b.media = k || "all"
+        });
+        return b
+    };
+    "undefined" !== typeof module ? module.exports = c : g.loadCSS = c
+})("undefined" !==
+    typeof global ? global : this);
+
+function onloadCSS(a, b) {
+	console.log('onloadCSS call');
+    a.onload = function() {
+        a.onload = null;
+        b && b.call(a)
+    };
+    if ("isApplicationInstalled" in navigator && "onloadcssdefined" in a) a.onloadcssdefined(b)
+};
 
 (function() {
 	'use strict';
