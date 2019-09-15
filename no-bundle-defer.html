@@ -5467,6 +5467,7 @@ g=window.stylesheets.length;for(e=0;e<m;e++)a=window.stylesheets[e],a.trim()&&!/
 					if (++loaded === cssCount) {
 						clearInterval(id);
 						wrapper.parentNode.removeChild(wrapper);
+						console.log('set timeout for css loaded');
 						setTimeout(cssLoaded, 300);
 					}
 				}
