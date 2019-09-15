@@ -5341,7 +5341,8 @@ function onloadCSS(a, b) {
 		href;
 	var loaded = 0;
 	var wrapper = document.createElement('div');
-	wrapper.style = "transform:translate3d(0,0,0);z-index:-1;";
+	wrapper.style = "transform:translate3d(0,0,0);z-index:-1;top:0;width:100%;position:fixed;";
+	
 	var divs = [];
 	var CustomEvent = function(event, params) {
 		var evt,
