@@ -2009,6 +2009,7 @@ Moff.modules.create("HeaderTheme3", function() {
             config: c.config.liveSearchConfig
         });
         c.afterCssLoaded(function() {
+		console.log('header after css loaded callback');
             setTimeout(function() {
                 v = BEM.findChildBlocksFirst($(c.scope), "menu-icon");
                 I = c.$find(b.menuTriggerWrapper);
