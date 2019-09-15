@@ -155,7 +155,7 @@ Moff.modules.create('Fixed', function() {
 				}
 
 				if (fixedElements[i].ghost || i === (fixedElements.length - 1)) {
-          maxHeight = 100%;
+          maxHeight = '100%';
 					//maxHeight = `${_windowHeight - (fixedElements[i].offsetBottom + fixedElements[i].margin)}px`;
 				}
 
