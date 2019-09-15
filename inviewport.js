@@ -15,7 +15,7 @@ Moff.modules.create("InViewport", function() {
         })
     }
     function e() {
-        return;
+        //return;
         for (var a = 0, d = c.length; a < d; a++) {
             var b = c[a];
             b && (Moff.utils.isElementInDom(b.node) ? (!b.inViewport && g(b.node) ? (b.inViewport = !0,
