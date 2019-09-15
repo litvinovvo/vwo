@@ -5439,9 +5439,11 @@ g=window.stylesheets.length;for(e=0;e<m;e++)a=window.stylesheets[e],a.trim()&&!/
 			} else {
 				cssCount--;
 			}
+			console.log('load css', window.stylesheets[i]);
 			window.loadCSS(window.stylesheets[i], before);
 			/* jshint loopfunc:true */
 			before.previousSibling.addEventListener('error', function() {
+				console.log('error load');
 				loaded++;
 			});
 			/* jshint loopfunc:false */
