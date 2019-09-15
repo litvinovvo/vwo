@@ -2440,3 +2440,5 @@ this.init=function(){k()}});
 
 Moff.modules.create("TestimonialsTheme1",function(){function d(a){return a.reduce(function(a,b){a[b]=!0;return a},{})}function e(){a.$find(".js-more-link").on("click",function(a){var b=$(this),c=b.closest(".js-testimonial-comment").find(".js-hidden-text"),b=b.closest(".js-more");c.length&&(c.removeClass("hidden"),b.remove(),a.preventDefault())})}var a=this,f={autoscroll:!1,showArrows:!1,showDots:!1},b=void 0;this.init=function(){b=$.extend(f,d(a.config.itemOptions));this.slideshow=Moff.modules.getByName("CarouselFactory")[0].create({name:"TestimonialsTheme1",
 $carousel:a.$find(".js-testimonials-slider"),options:{autoScroll:b.autoscroll,controls:b.showArrows,pagination:b.showDots}});a.afterCssLoaded(function(){a.slideshow.init();e()})}});
+
+(function(){function a(a){a()}window.inlineJS.forEach(a);window.inlineJS.push=a})();
