@@ -4487,6 +4487,7 @@ Copyright &copy; Alexander Toyota&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><strong><
 		<!-- End Google Tag Manager (noscript) -->
 				<script>
 			document.body.addEventListener('cssloaded', function() {
+				console.log('remove critical on cssLoaded event');
 				var criticalEl = document.getElementById('criticalCSS');
 				criticalEl.parentNode.removeChild(criticalEl);
 			});
@@ -4555,7 +4556,7 @@ function onloadCSS(a,b){a.onload=function(){a.onload=null;b&&b.call(a)};if("isAp
 		href;
 	var loaded = 0;
 	var wrapper = document.createElement('div');
-	wrapper.style = "transform:translate3d(0,0,0);z-index:-1;position:fixed;display:block;top:0;";
+	//wrapper.style = "transform:translate3d(0,0,0);z-index:-1;position:fixed;display:block;top:0;";
 	var divs = [];
 	var CustomEvent = function(event, params) {
 		var evt,
@@ -4627,6 +4628,7 @@ function onloadCSS(a,b){a.onload=function(){a.onload=null;b&&b.call(a)};if("isAp
 		}, 300);
 	}
 	function cssLoaded() {
+		console.log('dispatch event cssLoaded');
 		document.body.dispatchEvent(new CustomEvent('cssloaded', {
 			bubbles: true
 		}));
