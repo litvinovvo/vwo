@@ -4661,7 +4661,7 @@ function onloadCSS(a, b) {
 			var divCount = divs.length;
 			for (; j < divCount; j++) {
 				console.log('waiting', divs[j], divs[j].clientWidth);
-				if (divs[j] && divs[j].clientWidth === 0) {
+				if (divs[j]) { // && divs[j].clientWidth === 0) {
 					divs[j] = false;
 					if (++loaded === cssCount) {
 						clearInterval(id);
