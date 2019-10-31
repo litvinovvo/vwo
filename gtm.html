@@ -15,6 +15,10 @@
 	<script>
 	var myDataLayer = myDataLayer || [];
 		myDataLayer.push({event: 'hello', 'gtm.element': 'me'});
+		myDataLayer.push({event: 'hello', 'gtm.element': 'me2'});
+		setTimeout(() => {
+			myDataLayer.push({event: 'hello', 'gtm.element': 'me3'});
+		}, 3000);
 	</script>
 	
 </body>
