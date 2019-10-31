@@ -17,8 +17,9 @@
 		myDataLayer.push({event: 'hello', 'gtm.element': 'me'});
 		myDataLayer.push({event: 'hello', 'gtm.element': 'me2'});
 		setTimeout(() => {
-			myDataLayer.push({event: 'hello', 'gtm.element': 'me3'});
-		}, 15000);
+			console.log('after 10 sec');
+			window.myDataLayer.push({event: 'hello', 'gtm.element': 'me3'});
+		}, 10000);
 	</script>
 	
 </body>
