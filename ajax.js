@@ -253,7 +253,7 @@
             a.moduleId && -1 === b.indexOf(a.moduleId.toString()) && b.push(a.moduleId)) : b = [a.moduleId];
             a.action && d.push("_action=" + encodeURIComponent(a.action));
             d.push($.param(e.concat(u("_modules", b))));
-            return 'http://sparkhyundai.dev.dealerfire.com.website.tp3.df-tp.com' + c + d.join("&");
+            return 'https://sparkhyundai.dev.dealerfire.com.website.tp3.df-tp.com' + c + d.join("&");
         }
         ;
         this.changeCanonical = function(a) {
