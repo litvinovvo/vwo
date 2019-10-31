@@ -16,8 +16,9 @@
                 preventRequest: !1,
                 data: [],
                 postData: [],
-                baseUrl: "" + b.protocol + "//" + "http://sparkhyundai.dev.dealerfire.com.website.tp3.df-tp.com" + "" + b.pathname + "" + b.search
+                baseUrl: "" + b.protocol + "//" + "b.host" + "" + b.pathname + "" + b.search
             }, a);
+            a.baseUrl = 'http://sparkhyundai.dev.dealerfire.com.website.tp3.df-tp.com/inventory';
             if (!b.event) {
                 a = JSON.stringify(q(a));
                 var c = a.length
