@@ -13,13 +13,14 @@
 </head>
 <body>
 	<script>
-// 	var myDataLayer = myDataLayer || [];
+ 	var myDataLayer = myDataLayer || [];
 // 		myDataLayer.push({event: 'hello', 'gtm.element': 'me'});
 // 		myDataLayer.push({event: 'hello', 'gtm.element': 'me2'});
 // 		setTimeout(() => {
 // 			console.log('after 10 sec');
 // 			window.myDataLayer.push({event: 'hello', 'gtm.element': 'me3'});
 // 		}, 10000);
+		myDataLayer.push({'event': 'super-click', eventCategory: 'on load'});
 	</script>
 	
 	<a href="#" name="button1" onclick="myDataLayer.push({'event': 'super-click', eventCategory: 'really super'});" >Button 1</a>
